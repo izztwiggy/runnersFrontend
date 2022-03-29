@@ -1,22 +1,14 @@
-import {useState} from 'react'
+import {useState, useContext} from 'react'
 import { Link, useNavigate} from 'react-router-dom'
 import {Navbar, Nav, Container, Form, FormControl, Button} from 'react-bootstrap/'
+import {theme}from '../styles/theme'
 import axios from 'axios'
-
-const theme = {
-  highlight: '#DCEBD7',
-  nav: '#EF482D',
-  topNav: '#FDD73C',
-  background: '#FFE6BC',
-  canyonSky: '#0073A1',
-  canyon:'#CA6D52',
-  shrubGreen: '#4C4026'
-
-}
+import UserContext from '../UserContext'
 
 
 const Navigation = () => {
   const navigate = useNavigate()
+  const {user} = useContext(UserContext)
 
   const handleLogout = async() => {
     try{
@@ -26,29 +18,26 @@ const Navigation = () => {
     }catch(err){
       console.error(err)
     }
-
   }
+
   return (<>
-    <Navbar className="topNav" bg="dark" variant="dark" expand="xl">
-      <Container fluid>
+    <Navbar className="topNav" bg="dark" variant="dark" expand="md" sticky="top">
+      <Container className="navContainer" fluid>
         <Navbar.Brand as={Link} to="/">RUNNERS</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
-            className="me-auto my-2 my-lg-0"
+          className={ user ? "me-auto my-2 my-lg-0" : "justify-content-end"}
+            // className="me-auto my-2 my-lg-0"
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
-            <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-            <Nav.Link as={Link} to="/swipe">Swipe</Nav.Link>
-            <Nav.Link as={Link} to="/matches">Matches</Nav.Link>
-            <Nav.Link as={Link} to="/routes">Routes</Nav.Link>
-
-            <Nav.Link as={Link} to="/auth"> Login or Register</Nav.Link>
+          {!user && <>
             <Nav.Link as={Link} to="/"> About </Nav.Link>
-            <Nav.Link as={Button} variant={"outline-dark"} onClick={handleLogout}> Logout </Nav.Link>
-          </Nav>
+            <Nav.Link as={Link} to="/auth"> Login or Register</Nav.Link>
+          </>}
+        </Nav>
+        {user && 
           <Form className="d-flex">
             <FormControl
               type="search"
@@ -58,6 +47,7 @@ const Navigation = () => {
             />
             <Button variant="outline-light">Search</Button>
           </Form>
+        }
         </Navbar.Collapse>
       </Container>
 </Navbar>

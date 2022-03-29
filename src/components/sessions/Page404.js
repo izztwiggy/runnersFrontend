@@ -1,8 +1,36 @@
-import React from 'react'
+import Container from 'react-bootstrap/Container'
 
 const Page404 = () => {
-  return (
-    <div>404 PAGE NOT FOUND</div>
+  
+  
+  return (<>
+    <Container className="fourOfour" fluid>
+
+    <h3>404! PAGE NOT FOUND</h3>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    <div><h3>test</h3></div>
+    </Container>
+  
+  </>
   )
 }
 

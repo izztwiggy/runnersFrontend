@@ -11,7 +11,7 @@ const ShowFullUser = ({training, trainingPartner, runningBuddy, setShowModal, sh
     const user = training ? trainingPartner : runningBuddy
 
   return (<>
-   
+    {/* add in image carousel */}
     {/* large modal - fullscreen on small devices, close if click /focus outside */}
     <Modal
         size="xl"
@@ -42,10 +42,13 @@ const ShowFullUser = ({training, trainingPartner, runningBuddy, setShowModal, sh
                 </Row>
             </Container>
         </Modal.Body>
-        <Modal.Footer className='d-flex justify-content-between' >
+        <Modal.Footer closeButton>
+
+        </Modal.Footer>
+        {/* <Modal.Footer className='d-flex justify-content-between' >
             <Button onClick={handleDislike}>X</Button>
             <Button onClick={handleLike}>Like</Button>
-      </Modal.Footer>
+      </Modal.Footer> */}
       </Modal>
   
   </>

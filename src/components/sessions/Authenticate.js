@@ -1,24 +1,22 @@
+import { useState, useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import UserContext from '../../UserContext'
 import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import { useState } from 'react'
+import InputGroup from 'react-bootstrap/InputGroup'
 import axios from 'axios'
-
+import Eye from '../../images/icons/Eye.svg'
+import Google from '../../images/icons/Google.svg'
+import Facebook from '../../images/icons/Facebook.svg'
 
 const Authenticate = () => {
+  const {user, setUser} = useContext(UserContext)
+
   const [register, setRegister] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [verifyPassword, setVerifyPassword] = useState('')
-
-  // const handleChange = (e) => {
-  //   console.log(e.target.value)
-  //   setFormState({
-  //     ...formState, 
-  //     [e.target.id] : e.target.value
-  //   })
-  // }
-
 
   const baseUrl = 'http://localhost:4600/sessions/'
 
@@ -54,9 +52,10 @@ const Authenticate = () => {
       <div className='authentication'>      
           <Form onSubmit={(e) => handleSubmit(e)} >
             <h2>{register ? 'Register' : 'Login'}</h2>
+
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter email" />
+                <Form.Control value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter email"/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="password">
@@ -75,6 +74,15 @@ const Authenticate = () => {
               Submit
             </Button>
             <p onClick={()=>setRegister(!register)} className='switchToLogin'>{register ? 'Already a Member? Sign In!':'Not Yet a Member? Sign up!'}</p>
+
+            <hr/>
+            <p>{register ? 'Register' : 'Login'} with:</p>
+            <Button className="m-3">
+              <img src={Google} alt="googleIcon" variant="warning"/>
+            </Button>
+            <Button className="m-3">
+              <img className="google" src={Facebook} alt="facebookIcon" variant="warning"/>
+            </Button>
         </Form>
         
       </div>
