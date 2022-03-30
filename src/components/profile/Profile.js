@@ -1,23 +1,44 @@
 import { useState, useContext } from "react"
 import UserContext from "../../UserContext"
 import User from '../sessions/User'
+import SpinnerLoad from "../sessions/SpinnerLoad"
+import Prefrences from "./Prefrences"
+import Settings from "./Settings"
+import EditSettings from "./EditSettings"
+import EditPrefrences from "./EditPrefrences"
+import DisplayUserProfile from "./DisplayUserProfile"
+
+import Button from "react-bootstrap/Button"
+import Container from 'react-bootstrap/Container'
+
 
 const Profile = () => {
-  const {user} = useContext(UserContext)
+  const {user, profile, isLoading, setIsLoading} = useContext(UserContext)
+  const [settingsEdit, setSettingsEdit] = useState(false)
+  const [prefrencesEdit, setPrefrencesEdit] = useState(false)
+
   return (<>
+  <Container className="profilePage">
+    <DisplayUserProfile />
     <User />
     <div className="userInfo">
-    <button>Edit Prefrences</button>
-    <button>Edit Profile Data</button>
-    {user && <>
+    <Button className="me-2" variant="outline-dark">Edit Prefrences</Button>
+    <Button className="me-2" variant="outline-dark">Edit Settings</Button>    
+    {user && 
+    <>
       <h3>Welcome {user.email}</h3>
     </>}
-    {user ? 'Hi User!' : 'Login To View!'}
-      <h1>TRAINING Partnership</h1>
-      <h3>Profile</h3>
-      <h6>Name:</h6>
-      <h6>Age</h6>
+    {isLoading && <SpinnerLoad />}
+    {settingsEdit ? 
+    <EditSettings /> :
+    <Settings /> 
+    }
+    {prefrencesEdit ?
+    <EditPrefrences /> :
+    <Prefrences />  
+    }
     </div> 
+  </Container>
   </>
   )
 }

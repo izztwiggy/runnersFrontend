@@ -1,19 +1,19 @@
-import React from 'react'
-import { Container } from 'react-bootstrap'
+import {useState, useContext} from 'react'
+import Container from 'react-bootstrap/Container'
 import Calendar from './Calendar'
+import UserContext from '../../UserContext'
+import Messages from './Messages'
 
 const Dashboard = () => {
-  const today = new Date()
+  const { user, isLoading, setIsLoading, profile } = useContext(UserContext)
+  
   
   return (<>
-  <Container>
-    <h2>Welcome to Your Dashboard User</h2>
-    <Calendar />
-
-
-
-  <p>Today is {today.toDateString()}</p>
-  </Container>
+    <Container fluid>
+      <Messages />
+      <Calendar />
+      
+    </Container>
  </> 
   )
 }

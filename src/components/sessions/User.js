@@ -2,8 +2,6 @@ import { useState, useContext, useEffect } from 'react'
 import UserContext from '../../UserContext'
 import axios from 'axios'
 
-
-
 const User = () => {
     const {user, setUser} = useContext(UserContext)
 
@@ -29,10 +27,8 @@ const User = () => {
       }, [])
 
   return (<div>
-  <h3>User </h3>
-  {user && <>
-    <h4>Hi {user.email}</h4>
-  </>}
+  <h4>Hi {user.email}</h4>
+    
   
   </div>
   )

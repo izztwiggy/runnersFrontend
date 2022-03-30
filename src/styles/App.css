@@ -6,9 +6,9 @@
 
 :root {
   --glass-gray: hsla(0, 45%, 98%, 0.379);
-  --glass-white: rgba(106,101,101,0.214), rgba(112,107,112,0.344);
+  --glass-white: rgba(106,101,101,0.314), rgba(112,107,112,0.344);
   --glass-secondary: rgba(87,10,94), rgba(143,64,50);
-  --glass-before: rgba(16,15,15,0.416);
+  --glass-before: rgba(0, 0, 0, 0.616);
   --blur: hsla(0,0%,100%, 0.03);
   --blur-small: hsla(0,5%, 27%, 0.379);
   --secondary-cards: hsla(0,5%, 66%, 0.16);
@@ -16,7 +16,31 @@
 /* *::after, *::before{
   box-sizing: border-box;
 } */
+.profilePage{
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 
+.profPicProfile{
+  max-height: 100%;
+  width: 100%;
+}
+
+.userProfCard{
+  border: 1px solid black;
+  height: 30rem;
+  width: 25%;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
 .recCard{
   margin: 0;
   box-shadow: 0 10px 15px rgba(0,0,0,0.4);
@@ -51,8 +75,10 @@ img, picture{
 }
 
 .footerNav{
-  background-color: var(--glass-before)
+  background-color: var(--glass-before);
+  color: white;
 }
+
 
 .authentication{
   display: flex;
@@ -80,6 +106,14 @@ img, picture{
   cursor: pointer;
 }
 
+.scrollUpBtn{
+  background-color: none;
+  margin: 1rem;
+}
+
+.scrollUpBtn:hover{
+  opacity: 1;
+}
 
 /* 
 .App-logo {

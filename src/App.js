@@ -33,7 +33,7 @@ function App() {
                 <Route path="/routes" element={<RoutesHub />} />
 
 
-                <Route path="/:userId" element={<Profile />} />
+                {/* <Route path="/:userId" element={<Profile />} />
                 <Route path="/:userId/prefrences" element={<Prefrences />} />
                 <Route path="/:userId/dashboard" element={<Dashboard />} />
                 <Route path="/:userId/matches" element={<Matches />} />
@@ -41,7 +41,7 @@ function App() {
               
                 
                 <Route path="/routes/new" element={<NewRoute />} />
-                <Route path="/routes/:routeId" element={<RouteView />} />
+                <Route path="/routes/:routeId" element={<RouteView />} /> */}
               
                 <Route path="/*" element={<Page404 />} />
 

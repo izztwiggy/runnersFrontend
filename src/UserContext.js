@@ -8,12 +8,26 @@ export const UserProvider = ({children}) => {
     const navigate = useNavigate()
     const location = useLocation()
 
+      // get user from local storage
+    // const userCheck = JSON.parse(localStorage.getItem('user'))
+
     const [user, setUser] = useState('')
     const [profile, setProfile] = useState('')
-    const [recs, setRecs] = useState([])
-    const [likes, setLikes] = useState([])
-    const [dislikes, setDislikes] = useState([])
+    const [recs, setRecs] = useState('')
+    const [likes, setLikes] = useState('')
+    const [dislikes, setDislikes] = useState('')
     const [isLoading, setIsLoading] = useState(false)
+    const baseUrl = 'http://localhost:4600/sessions/'
+    // set User to Local Storage
+
+    const setUserStorage = (data) => {
+      return localStorage.setItem('user', JSON.stringify(data))
+    } 
+
+    const logout = () => {
+        localStorage.removeItem('user')
+        setUser('')
+    }
 
   return (
   <UserContext.Provider value={{
@@ -22,7 +36,9 @@ export const UserProvider = ({children}) => {
       recs, setRecs, 
       likes, setLikes, 
       dislikes, setDislikes, 
-      isLoading, setIsLoading
+      isLoading, setIsLoading,
+      setUserStorage, logout,
+      baseUrl
   }}>
       {children}
   </UserContext.Provider>

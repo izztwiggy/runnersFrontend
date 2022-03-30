@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import Navigation from './Navigation'
 import Footer from './Footer'
 import UserContext from '../UserContext'
+import Button from 'react-bootstrap/Button'
 
 const Layout = ({children}) => {
     const location = useLocation()
@@ -10,6 +11,7 @@ const Layout = ({children}) => {
   return (<>
   <Navigation />
     {children}
+    
   <Footer />
   </>
 )

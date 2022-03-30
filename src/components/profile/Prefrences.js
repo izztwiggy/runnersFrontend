@@ -1,8 +1,9 @@
 import React from 'react'
 
 const Prefrences = () => {
-  return (
-    <div>Prefrences</div>
+  return (<>
+    <h3>Profile Prefrences</h3>
+  </>
   )
 }
 
