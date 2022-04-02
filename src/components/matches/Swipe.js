@@ -4,6 +4,7 @@ import UserCardLoading from './UserCardLoading'
 import ShowFullUser from './ShowFullUser'
 import runnerMountain from '../../images/mountain_running.jpeg'
 import { useState } from 'react'
+import useAuth from '../../hooks/useAuth'
 
 const Swipe = () => {
   const trainingParner = false

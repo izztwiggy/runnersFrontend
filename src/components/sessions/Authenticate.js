@@ -36,7 +36,7 @@ const Authenticate = () => {
       }
       if(register)data = {...data, verifyPassword:verifyPassword}
       let urlEndpoint = register ? 'register' : 'login'
-      let registration = await axios.post(`${baseUrl}${urlEndpoint}`,data)
+      let registration = await axios.post(`${baseUrl}/sessions/${urlEndpoint}`,data)
       console.log(registration.data)
       registration && setUser({id: registration.data._id, email: registration.data.email, token: registration.data.token})
       registration && setProfile(registration.data.profile)

@@ -1,9 +1,9 @@
-import { useState, useContext, useEffect } from 'react'
-import UserContext from '../../UserContext'
+import { useState, useEffect } from 'react'
+import useAuth from '../../hooks/useAuth'
 import axios from 'axios'
 
 const User = () => {
-    const {user, setUser} = useContext(UserContext)
+    const {user, setUser, profile, prefrences} = useAuth
 
     // useEffect(() => {
     //     let isMounted = true

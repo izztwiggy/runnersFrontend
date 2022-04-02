@@ -4,8 +4,8 @@ import UserContext from "../UserContext";
 
 
 const useRefreshToken = () => {
-    const {user, setUser} = useContext(UserContext)
-    const baseUrl = 'http://localhost:4600/sessions'
+    const {user, setUser, baseUrl} = useContext(UserContext)
+    const url = `${baseUrl}/sessions`
     const refresh = async() => {
         const response = await axios.get(`${baseUrl}/refresh`, {
             withCredentials: true

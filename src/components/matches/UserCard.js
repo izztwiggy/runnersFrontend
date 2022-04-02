@@ -3,6 +3,8 @@ import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from "react-bootstrap/ListGroupItem"
 import Container from 'react-bootstrap/Container'
+import useAuth from '../../hooks/useAuth'
+
 const UserCard = ({training, trainingPartner, runningBuddy, handleShow, handleDislike, handleLike}) => {
     const user = training ? trainingPartner : runningBuddy
   return (<>

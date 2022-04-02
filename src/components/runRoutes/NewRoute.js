@@ -13,7 +13,7 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import SpinnerLoad from '../sessions/SpinnerLoad'
 
 const NewRoute = () => {
- 
+  const {baseUrl} = useAuth
   const [isLoading, setIsLoading] = useState(false)
   const [name, setName] = useState('')
   const [distance, setDistance] = useState('')
@@ -47,7 +47,7 @@ const NewRoute = () => {
     try{
         const userStored = await JSON.parse(localStorage.getItem('user'))
         console.log(userStored.token)
-        let url = 'http://localhost:4600/routes'
+        let url = `${baseUrl}/routes`
         const config = {
           headers: {
             Authrization: `Bearer ${userStored.token}`

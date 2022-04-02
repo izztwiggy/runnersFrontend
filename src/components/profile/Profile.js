@@ -1,6 +1,7 @@
-import { useState, useContext, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import UserContext from "../../UserContext"
+import useAuth from '../../hooks/useAuth'
+
 import User from './User'
 import SpinnerLoad from "../sessions/SpinnerLoad"
 import Prefrences from "./Prefrences"
@@ -21,12 +22,13 @@ import axios from "axios"
 
 
 const Profile = () => {
-  const {user, profile, setProfile, isLoading, setIsLoading, edit, setEdit} = useContext(UserContext)
+  const {user, profile, setProfile, edit, setEdit, baseUrl} = useAuth
   const navigate = useNavigate()
   const [settingsEdit, setSettingsEdit] = useState(false)
   const [prefrencesEdit, setPrefrencesEdit] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   // const refresh = useRefreshToken()
-  const baseUrl = 'http://localhost:4600/'
+
 
   useEffect(() => {
     if(edit){
@@ -37,12 +39,9 @@ const Profile = () => {
     getProfile()
   }, [profile])
 
-
-
-
   const getProfile = async() => {
     try{  
-      const userProf = await axios.get(`${baseUrl}user`, {withCredentials: true})
+      const userProf = await axios.get(`${baseUrl}/user`, {withCredentials: true})
       userProf && setProfile(userProf.data)
       console.log(profile)
     }catch(err){

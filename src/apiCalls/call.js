@@ -1,6 +1,9 @@
 import axios from "axios";
+import useAuth from "../hooks/useAuth";
 
-const API = axios.create({baseURL: 'http://localhost:4600'})
+const {baseURL} = useAuth
+
+const API = axios.create({baseURL: baseURL})
 
 export const fetchRoutes = () => API.get('/routes')
 export const createRoute = (data) => API.post('/routes', data)

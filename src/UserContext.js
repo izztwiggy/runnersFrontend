@@ -19,9 +19,8 @@ export const UserProvider = ({children}) => {
     const [recs, setRecs] = useState('')
     const [likes, setLikes] = useState('')
     const [dislikes, setDislikes] = useState('')
-    const [isLoading, setIsLoading] = useState(false)
-    const baseUrl = 'http://localhost:4600/sessions/'
-    const url = process.env.REACT_NODE_ENV === 'production' ? process.env.REACT_APP_FRONTEND_URL : process.env.REACT_APP_MONGO_DB_URI
+    const baseUrl = process.env.REACT_NODE_ENV === 'production' ? process.env.REACT_APP_MONGO_URI : process.env.REACT_APP_MONGO_DB_URI
+    
     // set User to Local Storage
 
     const setUserStorage = (data) => {
@@ -33,7 +32,7 @@ export const UserProvider = ({children}) => {
 
     const getProfile = async() => {
       try{
-        let prof = await axios.get("http://localhost:4600/user", 
+        let prof = await axios.get(`${baseUrl}/user`, 
         {
           withCredentials: true
         })
@@ -63,11 +62,10 @@ export const UserProvider = ({children}) => {
       recs, setRecs, 
       likes, setLikes, 
       dislikes, setDislikes, 
-      isLoading, setIsLoading,
       prefrences, setPrefrences,
       setUserStorage, logout,
       edit,setEdit,
-      baseUrl, url
+      baseUrl
   }}>
       {children}
   </UserContext.Provider>
