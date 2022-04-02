@@ -16,6 +16,14 @@
 /* *::after, *::before{
   box-sizing: border-box;
 } */
+.contactUs{
+  background-image: url('../images/fresh_nikes_onFeet.jpeg');
+  background-size: 100%;
+  color: white;
+  padding: 5rem 2rem 0 2rem;
+}
+
+
 .profilePage{
   height: 100%;
   width: 100%;

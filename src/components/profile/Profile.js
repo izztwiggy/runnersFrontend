@@ -14,7 +14,7 @@ import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
-import useRefreshToken from "../../hooks/useRefreshToken"
+
 import Button from "react-bootstrap/Button"
 import Container from 'react-bootstrap/Container'
 import axios from "axios"
@@ -22,7 +22,7 @@ import axios from "axios"
 
 
 const Profile = () => {
-  const {user, profile, setProfile, edit, setEdit, baseUrl} = useAuth
+  const {user, profile, setProfile, prefrences, setPrefrences, edit, setEdit, baseUrl} = useAuth
   const navigate = useNavigate()
   const [settingsEdit, setSettingsEdit] = useState(false)
   const [prefrencesEdit, setPrefrencesEdit] = useState(false)
@@ -35,15 +35,20 @@ const Profile = () => {
       setSettingsEdit(true)
       setPrefrencesEdit(true)
     }
-    if(!user) navigate('/auth')
     getProfile()
-  }, [profile])
+  }, [])
+
 
   const getProfile = async() => {
     try{  
-      const userProf = await axios.get(`${baseUrl}/user`, {withCredentials: true})
-      userProf && setProfile(userProf.data)
-      console.log(profile)
+      const userStored = JSON.parse(localStorage.getItem('user'))
+      const config = {
+        headers: { Authorization: `Bearer ${userStored.token}` }
+      }
+      let base = `${baseUrl}/user`
+      const fetchUserData = await axios.get(base, config)
+      console.log('user ', fetchUserData.data)
+      fetchUserData && setProfile( fetchUserData.data)
     }catch(err){
       console.log(err)
     }
@@ -52,7 +57,9 @@ const Profile = () => {
   return (<>
   <Container className="profilePage" fluid>
     <Row>
-      <Col xs={12} md={6} xl={6}><DisplayUserProfile /></Col>
+      <Col xs={12} md={6} xl={6}>
+        <DisplayUserProfile />
+      </Col>
       <Col xs={12} md={6} xl={6}></Col>
       <Col xs={12} md={6} xl={6}></Col>
     </Row>

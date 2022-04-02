@@ -17,10 +17,11 @@ import { GoogleLogin } from 'react-google-login'
 
 const Authenticate = () => {
   const navigate = useNavigate()
-  const {user, setUser, profile, setProfile, prefrences, setPrefrences, isLoading, setIsLoading, setUserStorage, baseUrl, setEdit} = useContext(UserContext)
+  const {user, setUser, profile, setProfile, prefrences, setPrefrences, setUserStorage, baseUrl, setEdit} = useContext(UserContext)
 
   const [register, setRegister] = useState(false)
   const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [verifyPassword, setVerifyPassword] = useState('')
   const [showError, setShowError] = useState(false)
@@ -34,7 +35,7 @@ const Authenticate = () => {
         email: email, 
         password:password
       }
-      if(register)data = {...data, verifyPassword:verifyPassword}
+      if(register)data = {...data,username: username, verifyPassword:verifyPassword}
       let urlEndpoint = register ? 'register' : 'login'
       let registration = await axios.post(`${baseUrl}/sessions/${urlEndpoint}`,data)
       console.log(registration.data)
@@ -55,6 +56,7 @@ const Authenticate = () => {
     }
   }
 
+ 
 
 
   const relayError = (message) => {  
@@ -70,12 +72,13 @@ const Authenticate = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     setShowPassword(false)
-    setIsLoading(true)
+   
     sendRequest()
     setEmail('')
     setPassword('')
+    setUsername('')
     setVerifyPassword('')
-    setIsLoading(false)
+ 
   }
 
   const direct = () => {
@@ -93,22 +96,20 @@ const Authenticate = () => {
   
   const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID
 
-  const googleSuccess = async(res) => {   
-    const result = res?.profileObj
-    const token = res?.tokenId
-    try{
-      // const authenticate = await axios.post(url,data: {
-      //   result, token
-      // })
-    }catch(err){
+  // const googleSuccess = async(res) => {   
+  //   const result = res?.profileObj
+  //   const token = res?.tokenId
+  //   try{
+  //       console.log(res)
+  //   }catch(err){
+  //     console.log(err)
+  //   }
+  // }
 
-    }
-  }
-
-  const googleFailure = async(err) => {
-    console.log(err)
-    console.log('Google Sign in was unsucsessful')
-  }
+  // const googleFailure = async(err) => {
+  //   console.log(err)
+  //   console.log('Google Sign in was unsucsessful')
+  // }
 
   return (<>
     {showError && 
@@ -121,12 +122,18 @@ const Authenticate = () => {
       <div className='inputDiv'> 
          
           <Form onSubmit={(e) => handleSubmit(e)}>
-          {isLoading && <SpinnerLoad />}
           <h2>{register ? 'Register' : 'Login'}</h2>
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter email"/>
             </Form.Group>
+
+          {register && <>
+            <Form.Group className="mb-3" controlId="username">
+                <Form.Label>Username</Form.Label>
+                <Form.Control value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Choose a Username"/>
+            </Form.Group>
+          </>}
 
             <Form.Label>Password</Form.Label>
                 <InputGroup className="mb-3" id="password">
@@ -166,13 +173,13 @@ const Authenticate = () => {
 
             <hr/>
             <p>{register ? 'Register' : 'Login'} with:</p>
-            <GoogleLogin 
+            {/* <GoogleLogin 
               clientId={CLIENT_ID}
               buttonText="Google Sign In"
               onSuccess={googleSuccess}
               onFailure={googleFailure}
               cookiePolicy={'single_host_origin'}
-            />
+            /> */}
             <Button onClick={handleFBAuth}  variant="outline-primary" className="bg-primary m-3 rounded-3">
               <img className="google" src={Facebook} style={{height:'1.2rem', margin: '.25rem'}} alt="facebookIcon"/>
             </Button>

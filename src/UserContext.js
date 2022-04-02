@@ -19,6 +19,7 @@ export const UserProvider = ({children}) => {
     const [recs, setRecs] = useState('')
     const [likes, setLikes] = useState('')
     const [dislikes, setDislikes] = useState('')
+    const [contactUs, setContactUs] = useState('')
     const baseUrl = process.env.REACT_NODE_ENV === 'production' ? process.env.REACT_APP_MONGO_URI : process.env.REACT_APP_MONGO_DB_URI
     
     // set User to Local Storage
@@ -64,6 +65,7 @@ export const UserProvider = ({children}) => {
       dislikes, setDislikes, 
       prefrences, setPrefrences,
       setUserStorage, logout,
+      contactUs, setContactUs,
       edit,setEdit,
       baseUrl
   }}>

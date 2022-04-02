@@ -1,6 +1,6 @@
-import {useState, useEffect } from 'react'
+import {useState, useEffect, useContext} from 'react'
 import axios from 'axios'
-import useAuth from '../../hooks/useAuth'
+import UserContext from '../../UserContext'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
@@ -13,7 +13,7 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import SpinnerLoad from '../sessions/SpinnerLoad'
 
 const NewRoute = () => {
-  const {baseUrl} = useAuth
+  const {baseUrl} = useContext(UserContext)
   const [isLoading, setIsLoading] = useState(false)
   const [name, setName] = useState('')
   const [distance, setDistance] = useState('')
@@ -39,7 +39,7 @@ const NewRoute = () => {
       tags:tags,
       notes: notes
     }
-    console.log(data)
+  
     createRoute(data)
   }
 
@@ -54,10 +54,9 @@ const NewRoute = () => {
           }
         }
         let route = await axios.post(url,data,config)
-        console.log(route.data)
-
-        
-  
+        route && console.log(route.data)
+        // console.log(url)
+        // console.log(route.data)
     }catch(err){
       console.log(err)
     }
