@@ -68,3 +68,237 @@
       return [...prevUsersList, {name:uname, age: uAge}]
     })
   }
+
+
+  _______ Route Seeds _______
+  
+  
+  {
+	"_id" : ObjectId("6240e6dfea83ff3fce6f1695"),
+	"name" : "Hamlin Park Trails",
+	"distance" : 4.1,
+	"notes" : [
+		"Run the trails of Hamlin and get some great hills, You will need to take an unconvential route to get the full 4.1 miles as the park is relatively condensed."
+	],
+	"location" : "Shoreline",
+	"startZip" : "98133",
+	"user" : ObjectId("6240dff8e1883a05b856d005"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6240e768ea83ff3fce6f169a"),
+	"name" : "70th to U-Village Burke",
+	"distance" : 3.1,
+	"notes" : [
+		"Flat run to U-Village on the burke, can run either all the way until 25th or stop at the top entrance of U-Village. Slight downhill way there, very lowgrade. "
+	],
+	"location" : "Seattle",
+	"startZip" : "98115",
+	"user" : ObjectId("6240d6810c2c3281061025de"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6240e7e9ea83ff3fce6f169d"),
+	"name" : "65th to Kite Hill ",
+	"distance" : 2.8,
+	"notes" : [
+		"Leave the Burke on 65th and turn down the hill to enter into magnason Park. If you go all the way to the boat launch it's a steady down hill, on paved surface, then turn left it's flat until you get to Kite Hill. Bonus Hill sprints at the end! - If you Turn left on the connecting road, you will run by the fields and there is a slight incline that way. Best views are boat launch, the field access would be turning left on the access road."
+	],
+	"location" : "Seattle",
+	"startZip" : "98115",
+	"user" : ObjectId("6240d6810c2c3281061025de"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("62422e0de33d9de64a89ff70"),
+	"name" : "Lincoln Park to Alki",
+	"distance" : 4.2,
+	"notes" : [
+		"Run the trails of Lincoln park then head northwest towards alki to get a great view and a better workout!"
+	],
+	"location" : "Seattle",
+	"startZip" : "98116",
+	"user" : ObjectId("62422d51e33d9de64a89ff61"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6244a541520fd6ca59a94e5b"),
+	"name" : "175th doubleDown",
+	"distance" : 6,
+	"notes" : [
+		"Start at 175th on the trail in shoreline, either start North or South, North goes to 205th then turn and run to 145th, the loop back to 175th is 6 miles total. If you want a kicker, run to the base of the hill to meridian and then back to the trail. WOO"
+	],
+	"location" : "Shoreline",
+	"startZip" : "98133",
+	"user" : ObjectId("6244a353e23520691fd60213"),
+	"__v" : 0
+}
+
+
+__________ USER SEEDS _____________
+
+{
+	"_id" : ObjectId("6240c75a4de4f2f3a4c9fbde"),
+	"email" : "stars@space.com",
+	"password" : "$2a$10$fnj.luNFNR3vB06RVQ16U.dEwQ6ioUgYNeZ0j/qMKU8Uhbbo13PC2",
+	"createdAt" : ISODate("2022-03-27T20:21:46.529Z"),
+	"updatedAt" : ISODate("2022-03-27T20:21:46.529Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6240c7714de4f2f3a4c9fbe3"),
+	"email" : "cheeky@boom.com",
+	"password" : "$2a$10$394LS6zwmp8z2FW5w0AZ3O00mSZJRXi0GqQza6XJlB56injGC0GXS",
+	"createdAt" : ISODate("2022-03-27T20:22:09.853Z"),
+	"updatedAt" : ISODate("2022-03-27T20:22:09.853Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6240c79c4de4f2f3a4c9fbe9"),
+	"email" : "rain@storm.com",
+	"password" : "$2a$10$Q.rVhl55PyecSLpHRCTWluFQiItJHLgK1btws1sghy3GrSD/0gYya",
+	"createdAt" : ISODate("2022-03-27T20:22:52.274Z"),
+	"updatedAt" : ISODate("2022-03-27T20:22:52.274Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6240c815b7dba1514aa76b34"),
+	"email" : "warmair@soccer.com",
+	"password" : "$2a$10$USGPBDV2CmdhwdlWo0Jmr.yk5D0KUAsg3.4pWyST1k81hr.4x2ODy",
+	"createdAt" : ISODate("2022-03-27T20:24:53.922Z"),
+	"updatedAt" : ISODate("2022-03-27T20:24:53.922Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6240c86879edad358904a6ec"),
+	"email" : "babyrocket@gmail.com",
+	"password" : "$2a$10$gWiAVWz1p9GHnsK7413r4OrXnCikU2ELUW6o6wLBetwetvbJ0uPae",
+	"createdAt" : ISODate("2022-03-27T20:26:16.620Z"),
+	"updatedAt" : ISODate("2022-03-27T20:26:16.620Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6240d3041db78190d3f85944"),
+	"email" : "bhote@runners.com",
+	"password" : "$2a$10$7pNl36XLBg/xyb/G0tWSQuI2Pi4.TpZfk/7dMMBy1A0lJlnV73Gbq",
+	"createdAt" : ISODate("2022-03-27T21:11:32.227Z"),
+	"updatedAt" : ISODate("2022-03-27T21:11:32.227Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6240d6810c2c3281061025de"),
+	"email" : "sylvie.sallquist@gmail.com",
+	"password" : "$2a$10$IBNaLOWC9R7uVs3fi7I5Ze.e627bPzoG665csSjWmHoMQtp5Mk/pu",
+	"createdAt" : ISODate("2022-03-27T21:26:25.987Z"),
+	"updatedAt" : ISODate("2022-03-27T21:26:25.987Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6240dff8e1883a05b856d005"),
+	"email" : "hp@gmail.com",
+	"password" : "$2a$10$5ENPq99sWi0lrQK9uH4g/OTW0ZfxD616FPtisoYVQXu538.skU2KW",
+	"createdAt" : ISODate("2022-03-27T22:06:48.623Z"),
+	"updatedAt" : ISODate("2022-03-27T22:06:48.623Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("62422d51e33d9de64a89ff61"),
+	"email" : "wilbur@hellcat.com",
+	"password" : "$2a$10$9GdoN2iwOVRJpxewxJ8z0e/iwwNW7WgDz/vkDB4HbjyPpKgeUcFzq",
+	"createdAt" : ISODate("2022-03-28T21:49:05.248Z"),
+	"updatedAt" : ISODate("2022-03-28T21:49:05.248Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6242bb0e02d4ef3c658de916"),
+	"email" : "maria@bond.com",
+	"password" : "$2a$10$/DklZicGMHM2CAoG73t0feMTnLnuliS2qUWoZuqU2FwGFZLae.6cm",
+	"refreshToken" : [ ],
+	"createdAt" : ISODate("2022-03-29T07:53:51.012Z"),
+	"updatedAt" : ISODate("2022-03-29T07:53:51.012Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("62436dfb6b6dcef1ad997983"),
+	"email" : "saiza@comcast.net",
+	"password" : "$2a$10$85cdoyzI4SwadXimzThjw.8l6uw26SRAr2S7pHwggKzSZOIUjpDRu",
+	"refreshToken" : [ ],
+	"createdAt" : ISODate("2022-03-29T20:37:15.322Z"),
+	"updatedAt" : ISODate("2022-03-29T20:37:15.322Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("62436ffa3b5f8f9b5607c2c1"),
+	"email" : "calico@gmail.com",
+	"password" : "$2a$10$ITgCRxAeeWZhAl5aRPRer.Wm5AGWRJHbKKeq6079DY92LyWXgd6L6",
+	"refreshToken" : [ ],
+	"createdAt" : ISODate("2022-03-29T20:45:46.928Z"),
+	"updatedAt" : ISODate("2022-03-29T20:45:46.928Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("624370663b5f8f9b5607c2c6"),
+	"email" : "syl.the.duck@gmail.com",
+	"password" : "$2a$10$OK4Pt94v3Surs4.tNhbxjOYoP97XHxfKopRn7szc/1bARIQgTv87C",
+	"refreshToken" : [ ],
+	"createdAt" : ISODate("2022-03-29T20:47:34.730Z"),
+	"updatedAt" : ISODate("2022-03-29T20:47:34.730Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("624376044cba2ad70742bc34"),
+	"email" : "issie@uw.com",
+	"password" : "$2a$10$ybFhXL50YYm/dtoT0l6kr.FSpanFyp/w5YS7f7cZKImwe8uI3tayy",
+	"refreshToken" : [ ],
+	"createdAt" : ISODate("2022-03-29T21:11:32.093Z"),
+	"updatedAt" : ISODate("2022-03-29T21:11:32.093Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("624392fbf88f7b197ff2999e"),
+	"email" : "bennett@sallquist.com",
+	"password" : "$2a$10$VEpz47/j74mfcpkZ2FCV2eSmaf5.4D7D6WFctcllBLpTdmWLInSiO",
+	"createdAt" : ISODate("2022-03-29T23:15:07.630Z"),
+	"updatedAt" : ISODate("2022-03-29T23:15:07.630Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("624395650fe912c698ee82a2"),
+	"email" : "sallquist.sylvie@gmail.com",
+	"password" : "$2a$10$sg0jfa/28h78KBcOrH712uAfJNn/Jwk/EoNjBO8Tegl2hK5hSPHd2",
+	"createdAt" : ISODate("2022-03-29T23:25:25.965Z"),
+	"updatedAt" : ISODate("2022-03-29T23:25:25.965Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("624395e80fe912c698ee82a7"),
+	"email" : "cat@meow.com",
+	"password" : "$2a$10$yeQXu8if3YDUqv.Am/d.SeSaJ/QxuuuOHjjqHSkdx1.34uJG/ZL8a",
+	"createdAt" : ISODate("2022-03-29T23:27:36.280Z"),
+	"updatedAt" : ISODate("2022-03-29T23:27:36.280Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("6243966b585ad3f9f367ae73"),
+	"email" : "lieslsallquist@gmail.com",
+	"password" : "$2a$10$peUd0jr0PV93smRAZLjyyuE82cb7K0zp2YT8JnqqnXaDp3lymrWpy",
+	"createdAt" : ISODate("2022-03-29T23:29:47.180Z"),
+	"updatedAt" : ISODate("2022-03-29T23:29:47.180Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("62439a19e0d5cb10583d17ef"),
+	"email" : "karen@ugh.com",
+	"password" : "$2a$10$1n1I5RHWKnkCeWS65hlomO9in96pDR9myY3bKeMyF7hhCIP2govGy",
+	"createdAt" : ISODate("2022-03-29T23:45:29.921Z"),
+	"updatedAt" : ISODate("2022-03-29T23:45:29.921Z"),
+	"__v" : 0
+}
+{
+	"_id" : ObjectId("62439b610ef0e167942545fe"),
+	"email" : "corn@chevy.com",
+	"password" : "$2a$10$FAmOQivUmrTlAPM6qfSd/.yQ001AB2558xLUHhZoXgNyJvp4nAazu",
+	"createdAt" : ISODate("2022-03-29T23:50:57.648Z"),
+	"updatedAt" : ISODate("2022-03-29T23:50:57.648Z"),
+	"__v" : 0
+}

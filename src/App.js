@@ -14,6 +14,11 @@ import RoutesHub from './components/runRoutes/RoutesHub';
 import RouteView from './components/runRoutes/RouteView'
 import NewRoute from './components/runRoutes/NewRoute';
 import Layout from './components/Layout'
+import Contact from './components/extraPages/Contact'
+import Resources from './components/extraPages/Resources'
+import Safety from './components/extraPages/Safety'
+import ResetPassword from './components/sessions/ResetPassword';
+
 // import Navigation from './components/Navigation'
 
 
@@ -32,6 +37,11 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard />}/>
                 <Route path="/routes" element={<RoutesHub />} />
 
+                <Route path="/safety" element={<Safety />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/resources" element={<Resources />} />
+
+                <Route path="/resetPassword" element={<ResetPassword />} />
 
                 {/* <Route path="/:userId" element={<Profile />} />
                 <Route path="/:userId/prefrences" element={<Prefrences />} />

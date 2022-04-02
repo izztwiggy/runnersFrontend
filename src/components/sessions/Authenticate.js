@@ -12,10 +12,12 @@ import Google from '../../images/icons/Google.svg'
 import Facebook from '../../images/icons/Facebook.svg'
 import Eye from '../../images/icons/Eye.svg'
 import SpinnerLoad from './SpinnerLoad'
+// import GoogleLoginComponent from './GoogleLoginComponent'
+import { GoogleLogin } from 'react-google-login'
 
 const Authenticate = () => {
   const navigate = useNavigate()
-  const {user, setUser, isLoading, setIsLoading, setUserStorage, baseUrl} = useContext(UserContext)
+  const {user, setUser, profile, setProfile, prefrences, setPrefrences, isLoading, setIsLoading, setUserStorage, baseUrl, setEdit} = useContext(UserContext)
 
   const [register, setRegister] = useState(false)
   const [email, setEmail] = useState('')
@@ -25,6 +27,7 @@ const Authenticate = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
+  // const passwordVal = new RegExp(/^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/})
   const sendRequest = async() => {
     try{
       let data = {
@@ -33,10 +36,14 @@ const Authenticate = () => {
       }
       if(register)data = {...data, verifyPassword:verifyPassword}
       let urlEndpoint = register ? 'register' : 'login'
-      let registration = await axios.post(`${baseUrl}${urlEndpoint}`, data)
-      registration && setUser(registration.data)
-      registration &&  
-      setUserStorage(registration.data)
+      let registration = await axios.post(`${baseUrl}${urlEndpoint}`,data)
+      console.log(registration.data)
+      registration && setUser({id: registration.data._id, email: registration.data.email, token: registration.data.token})
+      registration && setProfile(registration.data.profile)
+      registration && setPrefrences(registration.data.prefrences)
+      registration && setUserStorage({email: registration.data.email, id: registration.data._id, token: registration.data.token})   
+      // console.log(accessToken)
+
     }catch(error){
       if(error){
         error.response.status === 400 && relayError("User Email already In Use")
@@ -48,15 +55,14 @@ const Authenticate = () => {
     }
   }
 
+
+
   const relayError = (message) => {  
     setErrorMessage(message)
     setShowError(true)
+    
   }
-
-  const handleGoogleAuth = () => {
-    console.log('Auth with google')
-  }
-
+  
   const handleFBAuth = () => {
     console.log('Auth with FB')
   }
@@ -70,9 +76,38 @@ const Authenticate = () => {
     setPassword('')
     setVerifyPassword('')
     setIsLoading(false)
-    register ?
-    navigate('/profile') : 
-    navigate('/dashboard')
+  }
+
+  const direct = () => {
+    if(user && register){
+      setEdit(true)
+      navigate('/profile')
+    }
+    if(user && !register) navigate('/dashboard')
+  }
+
+  useEffect(() => {
+    direct()
+  }, [user, register])
+
+  
+  const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID
+
+  const googleSuccess = async(res) => {   
+    const result = res?.profileObj
+    const token = res?.tokenId
+    try{
+      // const authenticate = await axios.post(url,data: {
+      //   result, token
+      // })
+    }catch(err){
+
+    }
+  }
+
+  const googleFailure = async(err) => {
+    console.log(err)
+    console.log('Google Sign in was unsucsessful')
   }
 
   return (<>
@@ -83,7 +118,7 @@ const Authenticate = () => {
       errorMessage={errorMessage}
       setErrorMessage={setErrorMessage}
     />}
-      <div className='authentication'> 
+      <div className='inputDiv'> 
          
           <Form onSubmit={(e) => handleSubmit(e)}>
           {isLoading && <SpinnerLoad />}
@@ -106,7 +141,7 @@ const Authenticate = () => {
 
 
             {register && <>
-             <Form.Label>Verify Password</Form.Label>
+             <Form.Label>Verify Password </Form.Label>
              <InputGroup className="mb-3" id="verifyPassword"> 
                  <FormControl
                    placeholder="Verify Password" 
@@ -131,9 +166,13 @@ const Authenticate = () => {
 
             <hr/>
             <p>{register ? 'Register' : 'Login'} with:</p>
-            <Button onClick={handleGoogleAuth} variant="outline-danger" className="bg-danger m-3 rounded-3">
-              <img src={Google} style={{height:'1.2rem', margin: '.25rem'}} alt="googleIcon"/>
-            </Button>
+            <GoogleLogin 
+              clientId={CLIENT_ID}
+              buttonText="Google Sign In"
+              onSuccess={googleSuccess}
+              onFailure={googleFailure}
+              cookiePolicy={'single_host_origin'}
+            />
             <Button onClick={handleFBAuth}  variant="outline-primary" className="bg-primary m-3 rounded-3">
               <img className="google" src={Facebook} style={{height:'1.2rem', margin: '.25rem'}} alt="facebookIcon"/>
             </Button>
@@ -144,3 +183,74 @@ const Authenticate = () => {
 }
 
 export default Authenticate
+
+
+
+
+
+//   const googleSuccess = async(res) => {   
+//     try{  
+//       console.log('Auth with google')
+//       console.log(res)
+//       let data = await fetch("http://localhost:4600/auth/google", {
+//           method: "POST",
+//           body: JSON.stringify({
+//           token: res.tokenId
+//         }),
+//         headers: {
+//           "Content-Type": "application/json"
+//         }
+//       })
+//       let json = await data.json()
+//       if(json) console.log(json.data)
+
+      
+//     // store returned user somehow
+//   }catch(err){
+//       console.log(err)
+//   }                        
+// }   
+    
+        
+
+    //   data: {
+    //     token: token,
+    //     email:result.email,
+    //     googleId:result.googleId,
+    //   },
+    //   withCredentials: true,
+    //   url: 'http://localhost:4600/google',
+    // }).then((res) => {
+    //   console.log(res)
+    //   console.log(res.data)
+    //   // localStorage.setItem("user", res.data)
+      
+    // });
+    
+      // console.log(google)
+      // google && setUser(google.data)
+      // google && setUserStorage(google.data)   
+      // if(!google) relayError('Not Able to Authenitcate with google, please try again')
+      // google && setUser(google.data)
+      // google && setUserStorage(google.data)   
+      // if(!google) relayError('Not Able to Authenitcate with google, please try again')    
+
+
+    /* <Button onClick={handleGoogleAuth} variant="outline-danger" className="bg-danger m-3 rounded-3">
+              <img src={Google} style={{height:'1.2rem', margin: '.25rem'}} alt="googleIcon"/>
+            </Button> */
+
+              // const handleGoogleAuth = async() => {
+  //   try{  
+  //     console.log('Auth with google')
+  //     let google = await axios.get('http://localhost:4600/auth/google/callback')
+  //     console.log(google)
+  //     google && setUser(google.data)
+  //     google && setUserStorage(google.data)   
+  //     if(!google) relayError('Not Able to Authenitcate with google, please try again')
+
+  //   }catch(err){
+  //     console.log(err)
+  //   }
+    
+  // }
